@@ -1,0 +1,38 @@
+
+<div class="col">
+  <h4 class="page-header">Ürünler</h4>
+</div>
+
+<div class="col">
+  <input class="form-control" type="text" placeholder="type something..." [(ngModel)]="filterText">
+</div>
+
+<div class="col" *ngIf=filterText>
+<b>{{filterText}}</b> için arama yaptınız.
+</div>
+
+
+    
+
+<div *ngIf="addedProduct" class="alert alert-success"> 
+  {{addedProduct}} added to cart!
+</div>
+<div class="col mt-3">
+  <ul class="list-group">
+      <li *ngFor="let product of products | filter:filterText" class="list-group-item">
+     <button (click)="addToCard(product)" type="button" class="btn btn-sm btn-primary float-right">
+        Sepete ekle 
+        <i class="far fa-shopping-cart"></i>
+      </button>
+      <h5><b>{{product.productName | uppercase}}</b></h5>
+      <p>{{product.quantityPerUnit}}</p>
+      <h6>{{product.unitPrice | currency:'USD':true}}</h6>
+      <span>
+        <b>KDV'li tutar :</b>
+        ({{product.unitPrice | kdv | currency:'USD':true}})
+      </span>
+    </li>
+  </ul>
+</div>
+
+
