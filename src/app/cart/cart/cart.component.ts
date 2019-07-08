@@ -13,13 +13,10 @@ export class CartComponent implements OnInit {
   constructor(private cartService : CartService) { }
   isProductRemoved: boolean = false; 
   cartItems: CartItem[] = [];
-  ngDoCheck(): void {
-    console.log("cart component ekleme ");
-  }
   ngOnInit() {
     this.cartItems = this.cartService.list();
   }
-  removeFromCart(product: Product) { // Adım 5
+  removeFromCart(product: Product) { 
     if (confirm("Emin misiniz ?")) {
       this.cartService.removeFromCart(product);
       this.isProductRemoved = true;

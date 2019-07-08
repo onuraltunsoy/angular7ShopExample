@@ -12,6 +12,8 @@ import { FilterPipe } from './product/pipe/filter.pipe';
 import { CategoryComponent } from './category/category/category.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart/cart.component';
+import { LoginComponent } from './login/login.component';
+import { AccountService } from './login/service/account.service';
 
 
 @NgModule({
@@ -22,21 +24,23 @@ import { CartComponent } from './cart/cart/cart.component';
       KdvPipe,
       FilterPipe,
       CategoryComponent,
-      CartComponent
+      CartComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       HttpModule,
-      FormsModule,
-    
+      FormsModule
    ],
    providers: [
       {
-        provide: 'apiUrl',
-        useValue: "http://northwindapi.azurewebsites.net/api"
-      },CartService
-    ],
+         provide: 'apiUrl',
+         useValue: "http://northwindapi.azurewebsites.net/api"
+       },
+      CartService,
+      AccountService
+   ],
    bootstrap: [
       AppComponent
    ]
